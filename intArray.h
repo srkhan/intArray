@@ -22,14 +22,18 @@ public:
     intArray();
     intArray(int _size);
     intArray(int _size, int content);
+    intArray(int _size, int anArray[]);
+    ~intArray();
     
-//    void Print();
-//    void Add(int);
-//    void PrintSize();
+    void Print();
+    void Add(int);
+    void operator+(int);
+    bool operator==(intArray &);
+    void PrintSize();
     
     
 private:
-    int size = 0;
+    int size;
     int *data;
 
 };

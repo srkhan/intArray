@@ -40,6 +40,21 @@ intArray::intArray(int _size, int content) {
     }
 }
 
+intArray::intArray(int _size, int anArray[]) {
+    size = _size;
+    data = new int [size];
+    
+    for(int i=0; i < size; i++) {
+        data[i] = anArray[i];
+        *(data+i) = *(anArray+i);
+//        *(data++) = 0; //This is a really bad idea. Why?
+    }
+}
+
+intArray::~intArray() {
+    delete [] data;
+}
+
 void intArray::Print(){
     for(int i=0; i < size; i++) {
         cout << data[i] << " ";
@@ -47,14 +62,24 @@ void intArray::Print(){
     cout << endl;
 }
 
-void intArray::Add(int value){
-    if(size < max_size) {
-        data[size++] = value;
-        //Note that in the above line, ++size would not have worked. 
-    }
+void intArray::PrintSize(){
+    cout << "size: " << size << endl;
 }
 
-void intArray::PrintSize(){
-    cout << "max_size: " << max_size << endl;
-    cout << "size: " << size << endl;
+void intArray::Add(int value){
+    int *temp = new int [size+1]; //Make a temporary space
+    
+    for(int i=0; i < size; i++) {
+        temp[i] = data[i]; //Move data to temp
+    }
+    temp[size] = value; //This is the last element of the temp array that is one longer than data. 
+    
+    delete [] data; //Release the block that was reserved for data (not needed anymore). 
+    size++; //Increase size by 1.
+    data = new int [size]; //Allocate new space for data that is larger than before by 1 integer
+    
+    for(int i=0; i < size; i++) {
+        data[i] = temp[i]; //Move temp (with the extra element at the end) back to data. 
+    }
+    delete [] temp; //Release the memory block used by temp before exiting. 
 }

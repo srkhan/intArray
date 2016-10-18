@@ -97,3 +97,11 @@ bool intArray::operator==(intArray &rhs) {
     }
     return returnValue;
 }
+
+int intArray::operator [](int index){
+    if((index >= 0) && (index < size)) {
+        return data[index];
+    } else {
+        exit(0); //Simplest exception handling for now. May change later. 
+    }
+}

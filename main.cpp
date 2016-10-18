@@ -33,6 +33,8 @@ int main(int argc, char** argv) {
     } else {
         cout << "Array1 != Array2" << endl;
     }
+    
+    cout << Array1[0] << " " << Array2[0] << endl;
     return 0;
 }
 

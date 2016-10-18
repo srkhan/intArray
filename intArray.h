@@ -15,6 +15,7 @@
 #define INTARRAY_H
 
 #include <iostream>
+#include <cstdlib>
 using namespace std;
 
 class intArray {
@@ -26,9 +27,9 @@ public:
     ~intArray();
     
     void Print();
-    void Add(int);
     void operator+(int);
     bool operator==(intArray &);
+    int  operator[](int);
     void PrintSize();
     
     

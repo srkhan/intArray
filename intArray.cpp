@@ -66,7 +66,7 @@ void intArray::PrintSize(){
     cout << "size: " << size << endl;
 }
 
-void intArray::Add(int value){
+void intArray::operator+(int value){
     int *temp = new int [size+1]; //Make a temporary space
     
     for(int i=0; i < size; i++) {
@@ -82,4 +82,18 @@ void intArray::Add(int value){
         data[i] = temp[i]; //Move temp (with the extra element at the end) back to data. 
     }
     delete [] temp; //Release the memory block used by temp before exiting. 
+}
+
+bool intArray::operator==(intArray &rhs) {
+    bool returnValue = true;
+    if(size != rhs.size) {
+        returnValue = false;
+    }else {
+        for(int i=0; i < size; i++) {
+            if(data[i] != rhs.data[i]){
+                returnValue = false;
+            }
+        }
+    }
+    return returnValue;
 }

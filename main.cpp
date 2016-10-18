@@ -19,13 +19,20 @@
  */
 int main(int argc, char** argv) {
     intArray Array1(5, -2);
+    intArray Array2(5, -2);
     
     Array1.Print();
     Array1.PrintSize();
-    Array1.Add(15);
+    
+    Array1 + 15;
     Array1.Print();
     Array1.PrintSize();
-
+   
+    if(Array1 == Array2) {
+        cout << "Array1 == Array2" << endl;
+    } else {
+        cout << "Array1 != Array2" << endl;
+    }
     return 0;
 }
 

@@ -28,6 +28,7 @@ public:
     
     void Print();
     void operator+(int);
+    void operator+(intArray &);
     bool operator==(intArray &);
     int  operator[](int);
     void PrintSize();

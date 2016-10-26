@@ -85,31 +85,7 @@ void intArray::operator+(int value) {
     
     delete [] data; //Release the block that was reserved for data (not needed anymore). 
     size++; //Increase size by 1.
-    data = temp;
-    //The following portion is correct but not needed. 
-//    data = new int [size]; //Allocate new space for data that is larger than before by 1 integer
-//    
-//    for(int i=0; i < size; i++) {
-//        data[i] = temp[i]; //Move temp (with the extra element at the end) back to data. 
-//    }
-//    delete [] temp; //Release the memory block used by temp before exiting. 
-}
-
-void intArray::operator +(intArray &rhs){
-    int *temp = new int [size + rhs.size];
-    
-    //Copy data into temp
-    for(int i=0; i < size; i++) {
-        temp[i] = data[i];
-    }
-    
-    //Append rhs.data to the end of temp
-    for(int i=0; i < rhs.size; i++) {
-        temp[size+i] = rhs[i]; //Here I am using the overloaded [] operator.
-    }
-    delete [] data; //data is no longer needed
-    size += rhs.size; //Make sure to update the size of the new array
-    data = temp; //Point data to the same block as temp
+    data = temp; //Point the current data pointer to what temp is pointing to. 
 }
 
 void intArray::operator +(intArray &rhs) {

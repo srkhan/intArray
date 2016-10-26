@@ -24,13 +24,15 @@ public:
     intArray(int _size);
     intArray(int _size, int content);
     intArray(int _size, int anArray[]);
+    intArray(const intArray &);
     ~intArray();
     
-    void Print();
+    void Print() const;
     void operator+(int);
-    bool operator==(intArray &);
-    int  operator[](int);
-    void PrintSize();
+    void operator+(intArray &);
+    bool operator==(const intArray &) const;
+    int  operator[](int) const;
+    void PrintSize() const;
     
     
 private:

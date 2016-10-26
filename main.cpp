@@ -34,21 +34,23 @@ int main(int argc, char** argv) {
     Array1 + Array2;
     cout << "Array1 + Array2: " << endl;
     Array1.Print();
-
-    //    Array1.Print();
-    //    Array1.PrintSize();
-    //    
-    //    Array1 + 15;
-    //    Array1.Print();
-    //    Array1.PrintSize();
-    //   
-    //    if(Array1 == Array2) {
-    //        cout << "Array1 == Array2" << endl;
-    //    } else {
-    //        cout << "Array1 != Array2" << endl;
-    //    }
-    //    
-    //    cout << Array1[0] << " " << Array2[0] << endl;
+    Array1.PrintSize();
+    
+    Array1 + 15;
+    Array1.Print();
+    Array1.PrintSize();
+   
+    if(Array1 == Array2) {
+        cout << "Array1 == Array2" << endl;
+    } else {
+        cout << "Array1 != Array2" << endl;
+    }
+    
+    cout << Array1[0] << " " << Array2[0] << endl;
+    
+    Array1 + Array2;
+    Array1.Print();
+    Array1.PrintSize();
     return 0;
 }
 

@@ -30,10 +30,9 @@ public:
     void Print() const;
     void operator+(int);
     void operator+(intArray &);
-    bool operator==(const intArray &) const;
-    void operator=(const intArray &);
-    int  operator[](int) const;
-    void PrintSize() const;
+    bool operator==(intArray &);
+    int  operator[](int);
+    void PrintSize();
     
     
 private:

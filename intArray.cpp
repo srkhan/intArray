@@ -51,22 +51,31 @@ intArray::intArray(int _size, int anArray[]) {
     }
 }
 
+intArray::intArray(const intArray &rhs) {
+    size = rhs.size;
+    data = new int [size];
+    
+    for(int i=0; i < size; i++) {
+        data[i] = rhs.data[i];
+    }
+}
+
 intArray::~intArray() {
     delete [] data;
 }
 
-void intArray::Print(){
+void intArray::Print() const {
     for(int i=0; i < size; i++) {
         cout << data[i] << " ";
     }
     cout << endl;
 }
 
-void intArray::PrintSize(){
+void intArray::PrintSize() const {
     cout << "size: " << size << endl;
 }
 
-void intArray::operator+(int value){
+void intArray::operator+(int value) {
     int *temp = new int [size+1]; //Make a temporary space
     
     for(int i=0; i < size; i++) {
@@ -76,15 +85,24 @@ void intArray::operator+(int value){
     
     delete [] data; //Release the block that was reserved for data (not needed anymore). 
     size++; //Increase size by 1.
-    data = new int [size]; //Allocate new space for data that is larger than before by 1 integer
-    
-    for(int i=0; i < size; i++) {
-        data[i] = temp[i]; //Move temp (with the extra element at the end) back to data. 
-    }
-    delete [] temp; //Release the memory block used by temp before exiting. 
+    data = temp; //Point the current data pointer to what temp is pointing to. 
 }
 
-bool intArray::operator==(intArray &rhs) {
+void intArray::operator +(intArray &rhs) {
+    int *temp = new int [size + rhs.size];
+    
+    for(int i=0; i < size; i++) {
+        temp[i] = data[i];
+    }
+    for(int i=0; i < rhs.size; i++) {
+        temp[size+i] = rhs[i];
+    }
+    delete [] data;
+    data = temp;
+    size += rhs.size;
+}
+
+bool intArray::operator==(const intArray &rhs) const {
     bool returnValue = true;
     if(size != rhs.size) {
         returnValue = false;
@@ -98,7 +116,15 @@ bool intArray::operator==(intArray &rhs) {
     return returnValue;
 }
 
-int intArray::operator [](int index){
+    void operator=(const intArray &rhs){
+        delete [] data;
+        data = new int [rhs.size];
+        for(int i=0; i < size; i++) {
+            data[i] = rhs[i];
+        }
+    }
+
+int intArray::operator [](int index) const {
     if((index >= 0) && (index < size)) {
         return data[index];
     } else {
